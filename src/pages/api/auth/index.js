@@ -1,11 +1,8 @@
 import nextConnect from 'next-connect';
-import dbConnect from 'middlewares/config';
+import { dbConnect, ncOptions, validateBody } from 'middlewares';
 import { authUser } from 'controllers/auth.controller';
-import { ncOptions, validateBody } from 'middlewares/validations';
 
-dbConnect();
-
-const handler = nextConnect(ncOptions);
+const handler = nextConnect(ncOptions).use(dbConnect);
 
 handler.post(
     validateBody({

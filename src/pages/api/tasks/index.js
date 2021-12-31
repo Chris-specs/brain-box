@@ -2,8 +2,7 @@ import nextConnect from 'next-connect';
 import { dbConnect, auth, ncOptions, validateBody } from 'middlewares';
 import { createTask, getTasks } from 'controllers/task.controller';
 
-
-const handler = nextConnect(ncOptions).use(dbConnect, auth)
+const handler = nextConnect(ncOptions).use(dbConnect, auth);
 
 handler.post(
     validateBody({
@@ -11,7 +10,7 @@ handler.post(
         properties: {
             name: { type: 'string', minLength: 1 },
             content: { type: 'string' },
-            user: { type: 'string' }
+            user: { type: 'string' },
         },
         required: ['name', 'content'],
         additionalProperties: false,

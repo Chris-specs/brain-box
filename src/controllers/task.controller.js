@@ -41,7 +41,9 @@ export const createTask = async (req, res) => {
  */
 export const getTasks = async (req, res) => {
     try {
-        const tasks = await Task.find();
+        const { id } = req.user
+
+        const tasks = await Task.find({user: id}).sort({ updatedAt: -1 });
         return res.status(200).json({
             code: 200,
             status: 'success',
