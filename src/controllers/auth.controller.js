@@ -46,7 +46,7 @@ export const authUser = async (req, res) => {
             return res.status(200).json({
                 code: 200,
                 status: 'success',
-                message: 'User created successfully',
+                message: 'Login success',
                 data,
                 token
             });

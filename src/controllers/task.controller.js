@@ -5,7 +5,9 @@ import Task from 'models/Task';
  */
 export const createTask = async (req, res) => {
     try {
-        const { name } = req.body;
+
+        const { id } = req.user
+        const { name, content } = req.body;
 
         const taskFound = await Task.exists({ name });
         if (taskFound) {
@@ -16,7 +18,7 @@ export const createTask = async (req, res) => {
             });
         }
 
-        const newTask = await new Task(req.body);
+        const newTask = await new Task({name, content, user: id});
 
         const saveTask = await newTask.save();
         return res.status(201).json({

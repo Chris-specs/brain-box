@@ -1,11 +1,9 @@
 import nextConnect from 'next-connect';
-import dbConnect from 'middlewares/config';
+import { dbConnect, auth, ncOptions, validateBody } from 'middlewares';
 import { createTask, getTasks } from 'controllers/task.controller';
-import { ncOptions, validateBody } from 'middlewares/validations';
 
-dbConnect();
 
-const handler = nextConnect(ncOptions);
+const handler = nextConnect(ncOptions).use(dbConnect, auth)
 
 handler.post(
     validateBody({

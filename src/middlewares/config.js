@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 
-const dbConnect = async () => {
+const dbConnect = async (req, res, next) => {
     if (mongoose.connections[0].readyState) {
-        return;
+        return next();
     }
 
     await mongoose.connect(process.env.MONGODB_URI, {
@@ -12,6 +12,7 @@ const dbConnect = async () => {
         useNewUrlParser: true,
     });
     console.log('DB Connected');
+    next()
 };
 
 export default dbConnect;
