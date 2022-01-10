@@ -64,9 +64,18 @@ export const getTasks = async (req, res) => {
  */
 export const getTaskById = async (req, res) => {
     try {
+        const { id: user } = req.user
         const { id } = req.query
 
-        const task = await Task.findById(id);
+        const task = await Task.findOne({_id: id, user});
+
+        if (!task) {
+            return res.status(400).json({
+                code: 400,
+                status: 'error',
+                message: 'This task dont exists',
+            });
+        }
 
         return res.status(200).json({
             code: 200,
