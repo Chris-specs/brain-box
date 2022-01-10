@@ -1,8 +1,10 @@
 import nextConnect from 'next-connect';
 import { dbConnect, auth, ncOptions, validateBody } from 'middlewares';
-import { updateTask, deleteTask } from 'controllers/task.controller';
+import { getTaskById, updateTask, deleteTask } from 'controllers/task.controller';
 
 const handler = nextConnect(ncOptions).use(dbConnect, auth);
+
+handler.get((req, res) => getTaskById(req, res))
 
 handler.put(
     validateBody({

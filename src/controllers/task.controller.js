@@ -60,6 +60,30 @@ export const getTasks = async (req, res) => {
 };
 
 /**
+ * GET BY ID
+ */
+export const getTaskById = async (req, res) => {
+    try {
+        const { id } = req.query
+
+        const task = await Task.findById(id);
+
+        return res.status(200).json({
+            code: 200,
+            status: 'success',
+            message: 'Task listed successfully',
+            data: task,
+        });
+    } catch (error) {
+        return res.status(400).json({
+            code: 400,
+            status: 'error',
+            message: 'This task dont exists',
+        });
+    }
+};
+
+/**
  * UPDATE
  */
 export const updateTask = async (req, res) => {
