@@ -1,5 +1,5 @@
 {
-  "name": "to-do-box",
+  "name": "brain-box",
   "private": true,
   "scripts": {
     "dev": "next dev",

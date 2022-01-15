@@ -12,7 +12,7 @@ const Brain = () => {
     useEffect(() => {
         getTasks()
         return () => {}
-    }, [])
+    })
 
     return (
         <>

@@ -28,7 +28,7 @@ const Idea = () => {
             }
         });
         return () => {};
-    }, []);
+    });
 
     return (
         <>

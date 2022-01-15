@@ -29,7 +29,7 @@ const Idea = () => {
             router.reload();
         });
         return () => {};
-    }, []);
+    });
 
     error && router.replace('/');
 
