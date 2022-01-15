@@ -5,7 +5,7 @@ import useTask from 'hooks/useTask';
 import Button from 'components/shared/Button';
 import { useEffect } from 'react';
 
-const Home = () => {
+const Brain = () => {
     const { user } = useAuth();
     const { getTasks, tasks } = useTask();
 
@@ -20,9 +20,9 @@ const Home = () => {
                 <title>To-do Box</title>
                 <meta name='description' content='Look your tasks' />
             </Head>
-            <section className=''>
+            <section className='flex justify-center'>
                 <div className='w-full max-w-screen-2xl h-auto px-6 md:px-10 lg:px-20 xl:px-44'>
-                    <h1>Home {user.name}</h1>
+                    <h1>Brain {user.name}</h1>
                     <ul className='w-full flex flex-wrap gap-4'>
                         {tasks.map((task, i) => (
                             <Task key={i} task={task} />
@@ -34,7 +34,7 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default Brain;
 
 export async function getStaticProps() {
     return {
