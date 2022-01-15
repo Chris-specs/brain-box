@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getAllTasks, getTaskById } from 'services/task'
+import { createTask, getAllTasks, getTaskById, updateTaskById, deleteTaskById } from 'services/task'
 
 const useTask = () => {
 
@@ -8,6 +8,16 @@ const useTask = () => {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
     
+    const newTask = async (data) => {
+        try {
+            await createTask(data)
+        } catch (error) {
+            setError(true)
+        } finally {
+            setLoading(false)
+        }
+    }
+
     const getTasks = async () => {
         try {
             const response = await getAllTasks()
@@ -30,7 +40,28 @@ const useTask = () => {
         }
     }
 
-    return { getTask, task, getTasks, tasks, loading, error  }
+    const updateTask = async (id, data) => {
+        try {
+            await updateTaskById(id, data)
+        } catch (error) {
+            setError(true)
+        } finally {
+            setLoading(false)
+        }
+    }
+
+    const deleteTask = async (id) => {
+        try {
+            await deleteTaskById(id)
+        } catch (error) {
+            setError(true)
+        } finally {
+            setLoading(false)
+        }
+    }
+    
+
+    return { newTask, getTask, task, getTasks, tasks, updateTask, deleteTask, loading, error  }
 }
  
 export default useTask;

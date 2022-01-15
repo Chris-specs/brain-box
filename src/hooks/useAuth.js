@@ -25,7 +25,7 @@ const useAuth = () => {
             const response = await auth(form);
             localStorage.setItem('user', JSON.stringify(response.data.data));
             localStorage.setItem('token', JSON.stringify(response.data.token));
-            router.push('/tasks');
+            router.push('/brain');
         } catch (error) {
             setError(true);
         } finally {
