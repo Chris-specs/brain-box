@@ -3,9 +3,11 @@ import Link from 'next/link';
 import useAuth from 'hooks/useAuth';
 
 //Components
+import Image from 'next/image';
 import Button from './shared/Button';
 import Input from './shared/Input';
 import Loader from './shared/Loader';
+import Logo from '../../public/assets/logo.png';
 
 const LoginForm = ({}) => {
     const { authRequest, loading, error } = useAuth();
@@ -24,10 +26,12 @@ const LoginForm = ({}) => {
 
     return (
         <>
-            <div className='w-full'>
-                <h1 className='text-2xl font-bold text-center mb-10'>
-                    TO-DO BOX
-                </h1>
+            <div className='w-full flex flex-col gap-10'>
+                <div className='w-full flex justify-center items-center'>
+                    <div className='w-20 h-20 relative'>
+                        <Image src={Logo} alt='Logo' layout='fill' />
+                    </div>
+                </div>
                 <form onSubmit={submitForm} className='flex flex-col gap-6'>
                     <fieldset className='flex flex-col'>
                         <label className='text-sm'>Email</label>
