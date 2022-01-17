@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Task from 'components/Task';
+import Idea from 'components/Idea';
 import useAuth from 'hooks/useAuth';
 import useTask from 'hooks/useTask';
 import Button from 'components/shared/Button';
@@ -25,7 +25,7 @@ const Brain = () => {
                     <h1>Brain {user.name}</h1>
                     <ul className='w-full flex flex-wrap gap-4'>
                         {tasks.map((task, i) => (
-                            <Task key={i} task={task} />
+                            <Idea key={i} task={task} />
                         ))}
                     </ul>
                 </div>

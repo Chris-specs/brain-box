@@ -18,10 +18,7 @@ const Idea = () => {
                 content: content.current.value,
             };
 
-            // name.current.value !== '' && newTask(data);
-
             if (name.current.value !== '') {
-
                 const save = async () => {
                     await newTask(data)
                     router.replace('/brain');
