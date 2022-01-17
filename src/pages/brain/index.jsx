@@ -12,13 +12,13 @@ const Brain = () => {
     useEffect(() => {
         getTasks()
         return () => {}
-    })
+    }, [])
 
     return (
         <>
             <Head>
-                <title>To-do Box</title>
-                <meta name='description' content='Look your tasks' />
+                <title>Brain</title>
+                <meta name='description' content='Look your ideas' />
             </Head>
             <section className='flex justify-center'>
                 <div className='w-full max-w-screen-2xl h-auto px-6 md:px-10 lg:px-20 xl:px-44'>

@@ -1,6 +1,5 @@
 import { InnerContainer } from 'components/layout';
 import useTask from 'hooks/useTask';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState, useRef } from 'react';
 import { IoTrashBin, IoEllipsisVerticalSharp } from 'react-icons/io5';
@@ -17,26 +16,33 @@ const Idea = () => {
     useEffect(() => {
         getTask(window.location.pathname.split('/brain/')[1]);
         router.beforePopState(() => {
+
+            const data = {}
+
             if (
                 name.current.defaultValue !== name.current.value ||
                 content.current.defaultValue !== content.current.value
             ) {
-                updateTask(router.asPath.split('/brain/')[1], {
-                    name: name.current.value,
-                    content: content.current.value,
-                });
+                name.current.defaultValue !== name.current.value ? data.name = name.current.value : null
+                content.current.defaultValue !== content.current.value ? data.content = content.current.value : null
+                const saveIdea = async () => {
+                    await updateTask(router.asPath.split('/brain/')[1], data )
+                    router.replace('/brain');
+                }
+                saveIdea()
+            } else {
+                return true
             }
-            router.reload();
         });
         return () => {};
-    });
+    }, []);
 
     error && router.replace('/');
 
     const date = new Date(task.updatedAt);
     const deleteTaskNow = async () => {
         await deleteTask(router.asPath.split('/brain/')[1]);
-        router.back();
+        router.replace('/brain');
     };
 
     return (
