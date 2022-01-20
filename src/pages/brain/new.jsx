@@ -37,20 +37,20 @@ const Idea = () => {
                 <InnerContainer>
                     <div className='w-full h-[calc(100vh-7rem)]'>
                         <input
-                            className='w-full text-lg font-medium px-0 border-0 focus:ring-0'
+                            className='w-full dark:bg-black dark:text-white text-lg font-medium px-0 border-0 focus:ring-0'
                             type='text'
                             placeholder='Idea'
                             ref={name}
                         />
                         <textarea
-                            className='w-full h-[calc(100%-2rem)] px-0 border-0 focus:ring-0'
+                            className='w-full h-[calc(100%-2rem)] dark:bg-black dark:text-white px-0 border-0 focus:ring-0 resize-none scrollbar-hidden'
                             placeholder='Content...'
                             type='text'
                             ref={content}
                         />
                     </div>
                 </InnerContainer>
-                <div className='w-full h-10 flex justify-center items-center fixed bottom-0 z-10 overflow-hidden'>
+                <div className='w-full h-10 flex justify-center items-center text-gray-900 dark:text-white fixed bottom-0 z-10 overflow-hidden'>
                     <h1 className='text-xs text-center'>New idea</h1>
                 </div>
             </section>

@@ -37,7 +37,7 @@ const LoginForm = ({}) => {
                         <label className='text-sm'>Email</label>
                         <Input
                             type='email'
-                            placeholder='email@todobox.com'
+                            placeholder='email@brainbox.com'
                             onChange={(e) =>
                                 setForm(
                                     (form = { ...form, email: e.target.value })
@@ -70,10 +70,10 @@ const LoginForm = ({}) => {
                             {loading ? <Loader /> : 'Login'}
                         </Button>
                     </div>
-                    <p className='text-sm text-gray-600 text-center'>
+                    <p className='text-sm text-gray-500 text-center'>
                         Not a member?{' '}
                         <Link href='/signup'>
-                            <a className='text-slate-900 font-semibold'>
+                            <a className='text-slate-900 dark:text-white font-semibold'>
                                 Sign up now
                             </a>
                         </Link>

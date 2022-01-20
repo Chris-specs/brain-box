@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 
 const ThemeToggle = () => {
-    const [enabled, setEnabled] = useState(false);
+    const initialState = localStorage.getItem('theme') === 'dark' ? true : false
+    const [enabled, setEnabled] = useState(initialState);
 
     useEffect(() => {
         const htmlClasses = document.documentElement.classList;

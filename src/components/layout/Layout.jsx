@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
 
     return (
         <>
-            <header className='flex justify-center dark:bg-black'>
+            <header className='flex justify-center bg-white dark:bg-black sticky top-0 z-40'>
                 <InnerContainer>
                     {isAuth && (
                         <div className='h-16 flex justify-between items-center'>
@@ -26,7 +26,7 @@ const Layout = ({ children }) => {
                                 <button
                                     onClick={() => setShow(!show)}
                                     className={`before:block before:h-[1px] before:w-6 before:bg-gray-900 dark:before:bg-white before:transition-transform before:-translate-y-1 ${
-                                        show && 'before:rotate-45 before:transition-transform before:translate-y-[1px] after:-rotate-45 after:transition-transform after:translate-y-0'
+                                        show && 'before:rotate-45 before:transition-transform before:translate-y-1 after:-rotate-45 after:transition-transform after:translate-y-0'
                                     } after:block after:h-[1px] after:w-6 after:bg-gray-900 dark:after:bg-white after:transition-transform after:translate-y-1`}
                                 ></button>
                             </div>
@@ -35,12 +35,12 @@ const Layout = ({ children }) => {
                 </InnerContainer>
                 {show && <Menu />}
             </header>
-            <main className='relative'>{children}</main>
+            <main className='relative dark:bg-black'>{children}</main>
             <footer className='flex justify-center'>
                 {router.pathname === '/brain' && (
                     <div className='w-14 h-14 fixed bottom-10 right-10 z-10 rounded-2xl overflow-hidden'>
                         <Link href='/brain/new'>
-                            <a className='w-full h-full flex justify-center items-center bg-gray-900 text-white'>
+                            <a className='w-full h-full flex justify-center items-center bg-gray-900 dark:bg-white text-white dark:text-black'>
                                 <IoFlashOutline className='text-2xl' />
                             </a>
                         </Link>

@@ -10,6 +10,13 @@ function MyApp({ Component, pageProps }) {
 
   
   useEffect(() => {
+    
+      if (localStorage.getItem('theme')) {
+        localStorage.getItem('theme') === 'dark' && document.documentElement.classList.add('dark')
+      } else {
+        localStorage.setItem('theme', 'dark')
+      }
+
       const getAuthStatus = () => {
         const token = localStorage.getItem('token') !== null ? true : false
         setUser(localStorage.getItem('user') !== null ? true : false)

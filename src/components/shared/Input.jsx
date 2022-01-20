@@ -4,7 +4,7 @@ const Input = (props) => {
             <input
                 {...props}
                 autoComplete="on"
-                className='py-2.5 text-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mt-1 rounded-md'
+                className='py-2.5 text-sm dark:bg-black dark:text-white dark:placeholder:text-gray-600 border-gray-600 focus:border-gray-400 focus:ring-0 mt-1 rounded-md'
             />
         </>
     );
