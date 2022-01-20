@@ -67,20 +67,20 @@ const Idea = () => {
                         />
                     </div>
                 </InnerContainer>
-                {show && (
-                    <>
-                        <div className='w-screen h-screen bg-black/60 fixed z-40 top-0' onClick={() => setShow(!show)}></div>
-                        <div className='w-full bg-gray-brand fixed z-50 bottom-0 animate-fade-up'>
-                            <button
-                                className='w-full flex items-center gap-4 text-gray-700 dark:text-white/70 text-sm rounded-l p-4'
-                                onClick={() => deleteTaskNow()}
-                            >
-                                <IoTrashBinOutline className='text-xl' />{' '}
-                                Delete
-                            </button>
-                        </div>
-                    </>
-                )}
+
+                <div
+                    className={`${ show ? 'opacity-100 z-40' : 'opacity-0 -z-50' } w-screen h-screen bg-black/60 fixed top-0 transition-opacity duration-300`}
+                    onClick={() => setShow(!show)}
+                ></div>
+                <div className={`${ show ? 'translate-y-0' : 'translate-y-52'} w-full bg-gray-brand fixed z-50 bottom-0 transition-transform duration-300`}>
+                    <button
+                        className='w-full flex items-center gap-4 text-gray-700 dark:text-white/70 text-sm rounded-l p-4'
+                        onClick={() => deleteTaskNow()}
+                    >
+                        <IoTrashBinOutline className='text-xl' /> Delete
+                    </button>
+                </div>
+
                 <div className='w-full h-10 flex justify-between items-center fixed text-gray-900 dark:text-white bottom-0 z-10 px-6 overflow-hidden'>
                     <div>
                         <IoTrashBinOutline className='text-transparent' />
