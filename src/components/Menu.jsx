@@ -1,10 +1,19 @@
 import useAuth from 'hooks/useAuth';
+import { useEffect } from 'react';
 import { InnerContainer } from './layout';
 import Button from './shared/Button';
 import ThemeToggle from './ThemeToggle';
 
 const Menu = () => {
     const { user, logOut } = useAuth();
+
+    useEffect(() => {
+        document.querySelector('body').classList.add('fixed')
+      return () => {
+        document.querySelector('body').classList.remove('fixed')
+      };
+    }, []);
+    
 
     return (
         <>

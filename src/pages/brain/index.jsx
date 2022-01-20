@@ -1,12 +1,9 @@
 import Head from 'next/head';
 import Idea from 'components/Idea';
-import useAuth from 'hooks/useAuth';
 import useTask from 'hooks/useTask';
-import Button from 'components/shared/Button';
 import { useEffect } from 'react';
 
 const Brain = () => {
-    const { user } = useAuth();
     const { getTasks, tasks } = useTask();
 
     useEffect(() => {
@@ -20,10 +17,9 @@ const Brain = () => {
                 <title>Brain</title>
                 <meta name='description' content='Look your ideas' />
             </Head>
-            <section className='flex justify-center'>
+            <section className='flex justify-center dark:bg-black'>
                 <div className='w-full max-w-screen-2xl h-auto px-6 md:px-10 lg:px-20 xl:px-44'>
-                    <h1>Brain {user.name}</h1>
-                    <ul className='w-full flex flex-wrap gap-4'>
+                    <ul className='w-full flex flex-wrap gap-4 py-4'>
                         {tasks.map((task, i) => (
                             <Idea key={i} task={task} />
                         ))}
