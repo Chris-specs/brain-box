@@ -81,7 +81,7 @@ const Idea = () => {
                     </button>
                 </div>
 
-                <div className='w-full h-10 flex justify-between items-center fixed text-gray-900 dark:text-white bottom-0 z-10 px-6 overflow-hidden'>
+                <div className='w-full h-10 flex justify-between items-center fixed bg-white dark:bg-black text-gray-900 dark:text-white bottom-0 z-10 px-6 overflow-hidden'>
                     <div>
                         <IoTrashBinOutline className='text-transparent' />
                     </div>
