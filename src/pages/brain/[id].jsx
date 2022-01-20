@@ -2,7 +2,7 @@ import { InnerContainer } from 'components/layout';
 import useTask from 'hooks/useTask';
 import { useRouter } from 'next/router';
 import { useEffect, useState, useRef } from 'react';
-import { IoTrashBin, IoEllipsisVerticalSharp } from 'react-icons/io5';
+import { IoTrashBinOutline, IoEllipsisVerticalSharp } from 'react-icons/io5';
 
 const Idea = () => {
     const { getTask, updateTask, deleteTask, task, error } = useTask();
@@ -16,22 +16,25 @@ const Idea = () => {
     useEffect(() => {
         getTask(window.location.pathname.split('/brain/')[1]);
         router.beforePopState(() => {
-
-            const data = {}
+            const data = {};
 
             if (
                 name.current.defaultValue !== name.current.value ||
                 content.current.defaultValue !== content.current.value
             ) {
-                name.current.defaultValue !== name.current.value ? data.name = name.current.value : null
-                content.current.defaultValue !== content.current.value ? data.content = content.current.value : null
+                name.current.defaultValue !== name.current.value
+                    ? (data.name = name.current.value)
+                    : null;
+                content.current.defaultValue !== content.current.value
+                    ? (data.content = content.current.value)
+                    : null;
                 const saveIdea = async () => {
-                    await updateTask(router.asPath.split('/brain/')[1], data )
+                    await updateTask(router.asPath.split('/brain/')[1], data);
                     router.replace('/brain');
-                }
-                saveIdea()
+                };
+                saveIdea();
             } else {
-                return true
+                return true;
             }
         });
         return () => {};
@@ -47,17 +50,17 @@ const Idea = () => {
 
     return (
         <>
-            <section className='flex justify-center'>
+            <section className='flex justify-center dark:bg-black'>
                 <InnerContainer>
                     <div className='w-full h-[calc(100vh-7rem)]'>
                         <input
-                            className='w-full text-lg font-medium px-0 border-0 focus:ring-0'
+                            className='w-full dark:bg-black dark:text-white text-lg font-medium px-0 border-0 focus:ring-0'
                             type='text'
                             defaultValue={task.name}
                             ref={name}
                         />
                         <textarea
-                            className='w-full h-[calc(100%-2rem)] px-0 border-0 focus:ring-0 resize-none'
+                            className='w-full h-[calc(100%-2rem)] dark:bg-black dark:text-white px-0 border-0 focus:ring-0 resize-none scrollbar-hidden'
                             type='text'
                             defaultValue={task.content}
                             ref={content}
@@ -65,16 +68,22 @@ const Idea = () => {
                     </div>
                 </InnerContainer>
                 {show && (
-                    <button
-                        className='w-40 h-10 flex items-center gap-2 text-gray-700 text-sm border border-r-0 border-gray-400 fixed bottom-10 right-0 px-2 rounded-l animate-fade-left'
-                        onClick={() => deleteTaskNow()}
-                    >
-                        <IoTrashBin className='text-base text-red-400' /> Delete
-                    </button>
+                    <>
+                        <div className='w-screen h-screen bg-black/60 fixed z-40 top-0' onClick={() => setShow(!show)}></div>
+                        <div className='w-full bg-gray-brand fixed z-50 bottom-0 animate-fade-up'>
+                            <button
+                                className='w-full flex items-center gap-4 text-gray-700 dark:text-white/70 text-sm rounded-l p-4'
+                                onClick={() => deleteTaskNow()}
+                            >
+                                <IoTrashBinOutline className='text-xl' />{' '}
+                                Delete
+                            </button>
+                        </div>
+                    </>
                 )}
-                <div className='w-full h-10 flex justify-between items-center fixed text-gray-900 bottom-0 z-10 px-6 overflow-hidden'>
+                <div className='w-full h-10 flex justify-between items-center fixed text-gray-900 dark:text-white bottom-0 z-10 px-6 overflow-hidden'>
                     <div>
-                        <IoTrashBin className='text-transparent' />
+                        <IoTrashBinOutline className='text-transparent' />
                     </div>
                     <h1 className='text-xs text-center'>
                         Last update:{' '}

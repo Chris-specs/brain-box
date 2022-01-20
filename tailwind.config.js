@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin');
+
 module.exports = {
     content: [
         './src/pages/**/*.{js,ts,jsx,tsx}',
@@ -6,28 +8,44 @@ module.exports = {
     darkMode: 'class',
     theme: {
         extend: {
+            colors: {
+                'gray-brand' : '#111317'
+            },
             borderWidth: {
                 3: '3px',
             },
             keyframes: {
-                'fade-left': {
+                'fade-up': {
                     '0%': {
                         opacity: '0',
-                        // transform: 'translateX(200px)',
+                        transform: 'translateY(200px)',
                     },
                     '50%': {
                         opacity: '0',
                     },
                     '100%': {
                         opacity: '1',
-                        // transform: 'translateX(0)',
+                        transform: 'translateY(0)',
                     },
                 },
             },
             animation: {
-                'fade-left': 'fade-left 0.3s normal',
+                'fade-up': 'fade-up 0.15s normal',
             },
         },
     },
-    plugins: [require('@tailwindcss/forms')],
+    plugins: [
+        require('@tailwindcss/forms'),
+        plugin(function ({ addUtilities }) {
+            addUtilities({
+                '.scrollbar-hidden': {
+                    '-ms-overflow-style': 'none',
+                    'scrollbar-width': 'none',
+                },
+                '.scrollbar-hidden::-webkit-scrollbar': {
+                    display: 'none',
+                },
+            });
+        }),
+    ],
 };
