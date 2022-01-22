@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
 
     return (
         <>
-            <header className='flex justify-center bg-white dark:bg-black sticky top-0 z-40'>
+            <header className='flex flex-col justify-center bg-white dark:bg-black sticky top-0 z-40 overflow-y-scroll'>
                 <InnerContainer>
                     {isAuth && (
                         <div className='h-16 flex justify-between items-center'>
