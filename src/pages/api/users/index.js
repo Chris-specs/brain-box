@@ -2,7 +2,7 @@ import nextConnect from 'next-connect';
 import { dbConnect, auth, ncOptions, validateBody } from 'middlewares';
 import { createUser, getUsers } from 'controllers/user.controller';
 
-const handler = nextConnect(ncOptions).use(dbConnect, auth);
+const handler = nextConnect(ncOptions).use(dbConnect);
 
 handler.post(
     validateBody({
@@ -19,6 +19,6 @@ handler.post(
     (req, res) => createUser(req, res)
 );
 
-handler.get((req, res) => getUsers(req, res));
+handler.get(auth, (req, res) => getUsers(req, res));
 
 export default handler;
