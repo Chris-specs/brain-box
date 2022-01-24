@@ -1,6 +1,7 @@
 import { Layout } from 'components/layout'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import { publicRoutes } from 'utils/routes'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
@@ -20,16 +21,18 @@ function MyApp({ Component, pageProps }) {
       const getAuthStatus = () => {
         const token = localStorage.getItem('token') !== null ? true : false
         setUser(localStorage.getItem('user') !== null ? true : false)
-        !token && router.pathname !== '/' 
+        // console.log(!publicRoutes.includes(router.pathname));
+        // !token && router.pathname !== '/'
+        !token && !publicRoutes.includes(router.pathname)
         ? router.replace('/')
-        : token && router.pathname === '/' && router.replace('/brain')
+        : token && publicRoutes.includes(router.pathname) && router.replace('/brain')
         pageProps.statusCode === 404 && router.replace('/')
       }
       getAuthStatus()
     return () => {}
   })
   
-  if ( pageProps.protected && !user || router.pathname === '/' && user) {
+  if ( pageProps.protected && !user || publicRoutes.includes(router.pathname) && user || pageProps.statusCode === 404 ) {
     return null
   }
 
