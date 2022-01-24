@@ -17,7 +17,7 @@ const Menu = () => {
 
     return (
         <>
-            <div className='w-full h-[calc(100vh-4rem)] relative bottom-0 z-20 bg-white dark:bg-black'>
+            <div className='w-full h-[calc(100vh-4rem)] flex justify-center relative bottom-0 z-20 bg-white dark:bg-black'>
                 <InnerContainer>
                     <ul>
                         <li className='h-10 mt-10 capitalize text-center font-medium text-gray-900 dark:text-white'>

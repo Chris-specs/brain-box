@@ -34,7 +34,7 @@ const LoginForm = ({}) => {
                 </div>
                 <form onSubmit={submitForm} className='flex flex-col gap-6'>
                     <fieldset className='flex flex-col'>
-                        <label className='text-sm'>Email</label>
+                        <label className='text-sm dark:text-white'>Email</label>
                         <Input
                             type='email'
                             placeholder='email@brainbox.com'
@@ -46,7 +46,7 @@ const LoginForm = ({}) => {
                         />
                     </fieldset>
                     <fieldset className='flex flex-col'>
-                        <label className='text-sm'>Password</label>
+                        <label className='text-sm dark:text-white'>Password</label>
                         <Input
                             type='password'
                             placeholder=''
