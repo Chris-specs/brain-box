@@ -23,7 +23,8 @@ const Layout = ({ children }) => {
                                 <Image src={Logo} alt='Logo' layout='fill' />
                             </div>
                             <div className='w-12 h-10 flex justify-center items-center'>
-                                <button onClick={() => setShow(!show)}
+                                <button
+                                    onClick={() => setShow(!show)}
                                     className='h-full'
                                 >
                                     <div
@@ -40,16 +41,20 @@ const Layout = ({ children }) => {
                 {show && <Menu />}
             </header>
             <main className='relative dark:bg-black'>{children}</main>
-            <footer className='flex justify-center'>
-                {router.pathname === '/brain' && (
-                    <div className='w-14 h-14 fixed bottom-10 right-10 md:-translate-x-3 lg:-translate-x-12 xl:-translate-x-36 2xl:-translate-x-96 z-10 rounded-2xl overflow-hidden'>
-                        <Link href='/brain/new'>
-                            <a className='w-full h-full flex justify-center items-center bg-gray-900 dark:bg-white text-white dark:text-black'>
-                                <IoFlashOutline className='text-2xl' />
-                            </a>
-                        </Link>
+            <footer className='w-full flex justify-center fixed bottom-0 z-10'>
+                <InnerContainer>
+                    <div className='flex justify-end pb-10'>
+                        {router.pathname === '/brain' && (
+                            <div className='w-14 h-14 z-10 rounded-2xl overflow-hidden'>
+                                <Link href='/brain/new'>
+                                    <a className='w-full h-full flex justify-center items-center bg-gray-900 dark:bg-white text-white dark:text-black'>
+                                        <IoFlashOutline className='text-2xl' />
+                                    </a>
+                                </Link>
+                            </div>
+                        )}
                     </div>
-                )}
+                </InnerContainer>
             </footer>
         </>
     );
