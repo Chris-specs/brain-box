@@ -13,7 +13,7 @@ const auth = (req, res, next) => {
 
         const token = authorization.split(' ')[1];
 
-        const validToken = jwt.verify(token, process.env.SECRET_STRING); 
+        const validToken = jwt.verify(token, process.env.SECRET_STRING);
         req.user = validToken.user;
         next();
     } catch (error) {
